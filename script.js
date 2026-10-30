@@ -423,16 +423,17 @@ const projectData = {
         liveDemo: "https://docurag-local-rag-chatbot.vercel.app"
     },
     smarthealth: {
-        title: "SmartHealth AI",
-        category: "AI & ML / Full-Stack Web",
-        description: "An AI-assisted patient triage and clinical symptom analyzer. Built as Group Lead, bridging a high-responsiveness Next.js client with a Python ML microservice deployed on Vercel.",
+        title: "SmartHealth AI (Flagship Professional App)",
+        category: "AI & ML / HealthTech / Full-Stack Web",
+        description: "AI-Powered Smart Healthcare System and clinical triage platform. Unifies a high-responsiveness Next.js client with Python ML microservices deployed on Vercel to deliver real-time diagnostic intelligence.",
         highlights: [
-            "Coordinated a 4-engineer squad delivering modular architecture under agile sprints.",
-            "Integrated sub-200ms REST inference endpoints for rapid preliminary symptom risk stratification.",
-            "Crafted a mobile-responsive modern dashboard with Tailwind CSS and glassmorphism UI."
+            "Real-time Vitals Monitoring: Continuous patient sensory telemetry ingestion with automated anomaly alerts.",
+            "AI Health Risk Assessment: Probabilistic triage risk scoring and acute condition prioritization (<200ms latency).",
+            "Medical Report Analysis: Automated diagnostic biomarker extraction and structured health summary generation.",
+            "Automated Appointment Booking: Intelligent medical triage department routing and calendar slot scheduling."
         ],
-        techStack: ["Next.js", "Python", "Tailwind CSS", "Vercel", "REST API", "Git"],
-        github: "https://github.com/Ravigupta9565",
+        techStack: ["Next.js", "Python", "Tailwind CSS", "Vercel", "REST API", "HealthTech", "Machine Learning"],
+        github: "https://github.com/Ravigupta9565/smart-healthcare",
         liveDemo: "https://smart-healthcare-phi.vercel.app"
     },
     phishing: {
