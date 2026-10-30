@@ -15,6 +15,7 @@
  * 10. Contact Form with Instant Feedback
  * 11. One-Click Copy Badges with Toasts
  * 12. Floating Back-to-Top Button
+ * 13. LeetCode Verified Stats Counter (User: Ravi956558)
  * ==========================================================================
  */
 
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initProjectFilter();
     initContactForm();
     initBackToTop();
+    initLeetCodeStats();
 });
 
 /* ==========================================================================
@@ -738,4 +740,102 @@ function initBackToTop() {
             behavior: "smooth"
         });
     });
+}
+
+/* ==========================================================================
+   13. LeetCode Verified Profile Metrics & Counter (User: Ravi956558)
+   ========================================================================== */
+function initLeetCodeStats() {
+    const leetCodeSection = document.getElementById("leetcode");
+    if (!leetCodeSection) return;
+
+    // Exact Verified Profile Data from https://leetcode.com/u/Ravi956558/
+    const leetCodeData = {
+        username: "Ravi956558",
+        profileUrl: "https://leetcode.com/u/Ravi956558/",
+        totalSolved: 40,
+        easy: 27,
+        medium: 13,
+        hard: 0,
+        rank: "3,210,431",
+        languages: {
+            java: { solved: 40, percentage: "97.5%" },
+            python: { solved: 1, percentage: "2.5%" }
+        }
+    };
+
+    const totalEl = document.getElementById("leetcodeTotal");
+    const easyEl = document.getElementById("leetcodeEasy");
+    const mediumEl = document.getElementById("leetcodeMedium");
+    const hardEl = document.getElementById("leetcodeHard");
+    const rankEl = document.getElementById("leetcodeRank");
+    const barEasy = document.getElementById("barEasy");
+    const barMedium = document.getElementById("barMedium");
+    const barHard = document.getElementById("barHard");
+    const barJava = document.getElementById("barJava");
+    const barPython = document.getElementById("barPython");
+
+    function animateNumber(element, target, duration = 1000) {
+        if (!element) return;
+        let start = 0;
+        const stepTime = Math.max(Math.floor(duration / (target || 1)), 25);
+        const timer = setInterval(() => {
+            start++;
+            element.textContent = start;
+            if (start >= target) {
+                element.textContent = target;
+                clearInterval(timer);
+            }
+        }, stepTime);
+    }
+
+    let hasAnimated = false;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+                hasAnimated = true;
+
+                // Animate Numbers
+                if (totalEl) animateNumber(totalEl, leetCodeData.totalSolved, 900);
+                
+                if (easyEl) {
+                    let eCount = 0;
+                    const eTimer = setInterval(() => {
+                        eCount++;
+                        easyEl.textContent = `${eCount} Solved`;
+                        if (eCount >= leetCodeData.easy) {
+                            easyEl.textContent = `${leetCodeData.easy} Solved`;
+                            clearInterval(eTimer);
+                        }
+                    }, 35);
+                }
+
+                if (mediumEl) {
+                    let mCount = 0;
+                    const mTimer = setInterval(() => {
+                        mCount++;
+                        mediumEl.textContent = `${mCount} Solved`;
+                        if (mCount >= leetCodeData.medium) {
+                            mediumEl.textContent = `${leetCodeData.medium} Solved`;
+                            clearInterval(mTimer);
+                        }
+                    }, 50);
+                }
+
+                if (hardEl) hardEl.textContent = `${leetCodeData.hard} Solved`;
+                if (rankEl) rankEl.textContent = leetCodeData.rank;
+
+                // Animate Progress Bars
+                if (barEasy) barEasy.style.width = "67.5%";
+                if (barMedium) barMedium.style.width = "32.5%";
+                if (barHard) barHard.style.width = "0%";
+                if (barJava) barJava.style.width = "97.5%";
+                if (barPython) barPython.style.width = "2.5%";
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    observer.observe(leetCodeSection);
 }
