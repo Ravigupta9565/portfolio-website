@@ -831,14 +831,14 @@
                     Featured Projects & Systems
                 </h2>
                 <p class="text-slate-400 text-sm sm:text-base">
-                    7 battle-tested applications spanning production machine learning, real-time computer vision, data pipeline engineering, and web security.
+                    8 battle-tested applications spanning production machine learning, real-time computer vision, data pipeline engineering, and web security.
                 </p>
             </div>
 
             <!-- Filter Tabs [All, AI & ML, Data Analytics, Cybersecurity & Web] -->
             <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
                 <button class="project-filter-btn active" data-filter="all">
-                    <i class="fas fa-border-all"></i> All Projects (7)
+                    <i class="fas fa-border-all"></i> All Projects (8)
                 </button>
                 <button class="project-filter-btn" data-filter="ai-ml">
                     <i class="fas fa-brain"></i> AI & ML
@@ -851,10 +851,58 @@
                 </button>
             </div>
 
-            <!-- Project Cards Grid (EXACTLY 7 PROJECTS) -->
+            <!-- Project Cards Grid (8 PROJECTS) -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
                 
-                <!-- 1. SmartHealth AI -->
+                <!-- 1. DocuRAG - Local RAG Chatbot -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="ai-ml cyber-web">
+                    <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-violet-950/40 via-slate-900/60 to-slate-950 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-violet-500/20 text-violet-300 border border-violet-500/30 flex items-center gap-1.5">
+                                <i class="fas fa-brain"></i> AI &amp; ML / Generative AI
+                            </span>
+                            <span class="text-xs font-mono text-emerald-400 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live on Vercel
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">DocuRAG - Local RAG Chatbot</h3>
+                        <p class="text-xs text-violet-300 font-mono">Groq API • Llama 3.3 70B • FAISS • FastAPI</p>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Retrieval-Augmented Generation (RAG) system for intelligent PDF document Q&amp;A and semantic document search. Built with Groq API (llama-3.3-70b-versatile), FAISS vector embeddings, FastAPI/Flask backend, and deployed across Render and Vercel.
+                        </p>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Key Architecture:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-pill">RAG</span>
+                                <span class="tech-pill">Groq API</span>
+                                <span class="tech-pill">FAISS</span>
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">Llama 3.3</span>
+                                <span class="tech-pill">Vector DB</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center gap-2">
+                            <a href="https://docurag-local-rag-chatbot.vercel.app" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-violet-500 to-indigo-600 hover:from-violet-400 hover:to-indigo-500 text-white font-semibold text-xs text-center shadow-md shadow-violet-500/20 transition flex items-center justify-center gap-1.5">
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+                                <span>Live Demo</span>
+                            </a>
+                            <a href="https://github.com/Ravigupta9565/docurag-local-rag-chatbot" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white font-medium text-xs text-center border border-slate-700/80 transition flex items-center justify-center gap-1.5">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub Code</span>
+                            </a>
+                            <button onclick="openProjectModal('docurag')" title="Deep Dive Technical Specs" class="p-2 rounded-xl bg-slate-800/50 hover:bg-violet-500/20 text-slate-400 hover:text-violet-300 border border-slate-800 hover:border-violet-500/40 text-xs transition flex items-center justify-center shrink-0">
+                                <i class="fas fa-circle-info"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SmartHealth AI -->
                 <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="ai-ml cyber-web">
                     <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-brand-950/40 via-slate-900/60 to-slate-950 relative">
                         <div class="flex items-center justify-between mb-4">

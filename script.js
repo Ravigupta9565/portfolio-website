@@ -409,6 +409,19 @@ function initProjectFilter() {
    9. Project Details Modal (7 Projects Data & Handlers)
    ========================================================================== */
 const projectData = {
+    docurag: {
+        title: "DocuRAG - Local RAG Chatbot",
+        category: "AI & ML / Generative AI",
+        description: "Retrieval-Augmented Generation (RAG) system for intelligent PDF document Q&A and semantic document search. Built with Groq API (llama-3.3-70b-versatile), FAISS vector embeddings, FastAPI/Flask backend, and deployed across Render and Vercel.",
+        highlights: [
+            "Engineered chunking and vector indexing with FAISS for sub-second semantic retrieval across complex PDF documents.",
+            "Integrated Groq API utilizing llama-3.3-70b-versatile with temperature tuning for hallucinations suppression.",
+            "Architected decoupled microservices with high-performance FastAPI/Flask backend on Render and modern frontend on Vercel."
+        ],
+        techStack: ["RAG", "Groq API", "FAISS", "Python", "Llama 3.3", "Vector DB", "FastAPI", "Vercel"],
+        github: "https://github.com/Ravigupta9565/docurag-local-rag-chatbot",
+        liveDemo: "https://docurag-local-rag-chatbot.vercel.app"
+    },
     smarthealth: {
         title: "SmartHealth AI",
         category: "AI & ML / Full-Stack Web",
@@ -419,7 +432,8 @@ const projectData = {
             "Crafted a mobile-responsive modern dashboard with Tailwind CSS and glassmorphism UI."
         ],
         techStack: ["Next.js", "Python", "Tailwind CSS", "Vercel", "REST API", "Git"],
-        github: "https://github.com/Ravigupta9565"
+        github: "https://github.com/Ravigupta9565",
+        liveDemo: "https://smart-healthcare-phi.vercel.app"
     },
     phishing: {
         title: "Smart Cyber Threat & Phishing URL Analyzer",
@@ -431,7 +445,8 @@ const projectData = {
             "Stored telemetry reports in SQLite and served evaluation endpoints via Flask."
         ],
         techStack: ["Python", "Flask", "SQLite", "Shannon Entropy", "Heuristic Rules", "Cybersecurity"],
-        github: "https://github.com/Ravigupta9565"
+        github: "https://github.com/Ravigupta9565",
+        liveDemo: "https://phishing-url-analyzer-phi.vercel.app/"
     },
     attendance: {
         title: "AttendanceOS",
@@ -507,11 +522,21 @@ function openProjectModal(projectId) {
     const modalHighlights = document.getElementById("modalHighlights");
     const modalTechStack = document.getElementById("modalTechStack");
     const modalGithubLink = document.getElementById("modalGithubLink");
+    const modalLiveDemoLink = document.getElementById("modalLiveDemoLink");
 
     modalTitle.textContent = data.title;
     modalCategory.textContent = data.category;
     modalDescription.textContent = data.description;
     modalGithubLink.href = data.github;
+
+    if (modalLiveDemoLink) {
+        if (data.liveDemo) {
+            modalLiveDemoLink.href = data.liveDemo;
+            modalLiveDemoLink.classList.remove("hidden");
+        } else {
+            modalLiveDemoLink.classList.add("hidden");
+        }
+    }
 
     // Highlights list
     modalHighlights.innerHTML = "";
