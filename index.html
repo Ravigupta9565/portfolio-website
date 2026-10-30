@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Ravi Gupta | Data Science & Machine Learning Portfolio</title>
+    
+    <!-- Meta Descriptions for Recruiters & Search Engines -->
+    <meta name="description" content="Portfolio of Ravi Gupta - Data Science, Machine Learning, and Cloud Computing. B.Tech CSE 3rd Year student at Babu Banarasi Das University, Lucknow.">
+    <meta name="keywords" content="Ravi Gupta, Data Science, Machine Learning, Cloud Computing, Python, SQL, BBD University, Portfolio">
+    <meta name="author" content="Ravi Gupta">
+    <meta name="theme-color" content="#0b0f19">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        cyber: {
+                            dark: '#0b0f19',
+                            surface: '#0f172a',
+                            card: 'rgba(15, 23, 42, 0.75)',
+                            border: 'rgba(56, 189, 248, 0.15)',
+                            purple: '#a855f7',
+                            cyan: '#38bdf8',
+                            blue: '#0ea5e9',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome 6 & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0b0f19] text-slate-100 antialiased selection:bg-brand-500 selection:text-white relative">
+
+    <!-- Interactive Neural Network Canvas Background -->
+    <canvas id="neuralCanvas"></canvas>
+
+    <!-- Desktop Cursor Glow Effect -->
+    <div id="cursorGlow" class="cursor-glow"></div>
+
+    <!-- Ambient Glowing Radial Gradients -->
+    <div class="ambient-glow-cyan"></div>
+    <div class="ambient-glow-purple"></div>
+    <div class="ambient-glow-blue"></div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Sticky Navigation Header (EXACTLY 8 SECTIONS) -->
+    <header class="sticky top-0 z-50 glass-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Brand Identity (shrink-0 & whitespace-nowrap to always show full "Ravi Gupta") -->
+            <a href="#about" class="flex items-center gap-3 shrink-0 group select-none">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/25 group-hover:scale-105 group-hover:shadow-brand-400/40 transition-all duration-300 shrink-0">
+                    <i class="fas fa-brain text-lg"></i>
+                </div>
+                <div class="shrink-0 flex flex-col justify-center">
+                    <span class="text-xl font-extrabold tracking-tight text-white block whitespace-nowrap leading-tight group-hover:text-brand-400 transition-colors">
+                        Ravi  <span class="text-brand-400">Gupta</span>
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-medium tracking-wide block whitespace-nowrap leading-tight">
+                        Data Science &amp; ML
+                    </span>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation Links (ONLY 8 SECTIONS) -->
+            <nav class="hidden xl:flex items-center space-x-1 text-xs xl:text-sm font-medium bg-slate-900/80 p-1.5 rounded-full border border-slate-800 backdrop-blur-md shrink-0">
+                <a href="#about" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition whitespace-nowrap">About</a>
+                <a href="#skills" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition whitespace-nowrap">Skills</a>
+                <a href="#projects" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition whitespace-nowrap">Projects</a>
+                <a href="#experience" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition whitespace-nowrap">Experience</a>
+                <a href="#certificates" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition whitespace-nowrap">Certificates</a>
+                <a href="#resume" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition whitespace-nowrap">Resume</a>
+                <a href="#education" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition whitespace-nowrap">Education</a>
+                <a href="#contact" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/60 transition whitespace-nowrap">Contact</a>
+            </nav>
+
+            <!-- Quick Action Links & Resume CTA -->
+            <div class="hidden lg:flex items-center gap-2 shrink-0">
+                <!-- Primary GitHub -->
+                <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" 
+                   class="w-10 h-10 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 hover:border-brand-500/40 flex items-center justify-center transition" 
+                   title="Primary GitHub: Ravigupta9565">
+                    <i class="fab fa-github text-lg"></i>
+                </a>
+
+                <!-- Secondary GitHub -->
+                <a href="https://github.com/Raviguptaji9565" target="_blank" rel="noopener noreferrer" 
+                   class="w-10 h-10 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 hover:border-brand-500/40 flex items-center justify-center transition" 
+                   title="Secondary GitHub: Raviguptaji9565">
+                    <i class="fab fa-github-alt text-lg"></i>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/ravi-gupta-462652337/" target="_blank" rel="noopener noreferrer" 
+                   class="w-10 h-10 rounded-xl bg-slate-900/80 hover:bg-blue-600/20 text-slate-300 hover:text-brand-400 border border-slate-800 hover:border-brand-500/40 flex items-center justify-center transition" 
+                   title="LinkedIn: Ravi Gupta">
+                    <i class="fab fa-linkedin-in text-lg"></i>
+                </a>
+
+                <!-- Prominent Download Resume PDF Button in Top Nav -->
+                <a href="#resume" class="ml-1 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-brand-300 hover:text-white border border-brand-500/40 hover:border-brand-400 text-xs sm:text-sm font-semibold shadow-md shadow-brand-500/10 transition flex items-center gap-2 group">
+                    <i class="fas fa-file-pdf text-rose-400 group-hover:scale-110 transition-transform"></i>
+                    <span>Resume</span>
+                    <i class="fas fa-arrow-down text-[10px] text-brand-400"></i>
+                </a>
+
+                <!-- Direct Contact CTA -->
+                <a href="#contact" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-600 hover:from-brand-400 hover:to-indigo-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition flex items-center gap-2">
+                    <i class="fas fa-paper-plane text-xs"></i>
+                    <span>Hire Me</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="xl:hidden w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white focus:outline-none" aria-label="Toggle Mobile Navigation">
+                <i class="fas fa-bars text-xl" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer (EXACTLY 8 SECTIONS) -->
+        <div id="mobileMenu" class="hidden xl:hidden border-b border-slate-800 bg-slate-950/95 backdrop-blur-2xl px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto">
+            <nav class="flex flex-col space-y-2.5 font-medium">
+                <a href="#about" class="mobile-nav-link text-slate-200 hover:text-brand-400 py-1.5 transition flex items-center gap-3">
+                    <i class="fas fa-user-astronaut text-brand-400 w-5"></i> 1. About
+                </a>
+                <a href="#skills" class="mobile-nav-link text-slate-200 hover:text-brand-400 py-1.5 transition flex items-center gap-3">
+                    <i class="fas fa-microchip text-brand-400 w-5"></i> 2. Skills
+                </a>
+                <a href="#projects" class="mobile-nav-link text-slate-200 hover:text-brand-400 py-1.5 transition flex items-center gap-3">
+                    <i class="fas fa-diagram-project text-brand-400 w-5"></i> 3. Projects
+                </a>
+                <a href="#experience" class="mobile-nav-link text-slate-200 hover:text-brand-400 py-1.5 transition flex items-center gap-3">
+                    <i class="fas fa-briefcase text-brand-400 w-5"></i> 4. Experience
+                </a>
+                <a href="#certificates" class="mobile-nav-link text-slate-200 hover:text-brand-400 py-1.5 transition flex items-center gap-3">
+                    <i class="fas fa-certificate text-brand-400 w-5"></i> 5. Certificates
+                </a>
+                <a href="#resume" class="mobile-nav-link text-slate-200 hover:text-brand-400 py-1.5 transition flex items-center gap-3">
+                    <i class="fas fa-file-pdf text-brand-400 w-5"></i> 6. Resume
+                </a>
+                <a href="#education" class="mobile-nav-link text-slate-200 hover:text-brand-400 py-1.5 transition flex items-center gap-3">
+                    <i class="fas fa-graduation-cap text-brand-400 w-5"></i> 7. Education
+                </a>
+                <a href="#contact" class="mobile-nav-link text-slate-200 hover:text-brand-400 py-1.5 transition flex items-center gap-3">
+                    <i class="fas fa-envelope-open-text text-brand-400 w-5"></i> 8. Contact
+                </a>
+            </nav>
+
+            <div class="pt-4 border-t border-slate-800/80 space-y-3">
+                <a href="#resume" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-600 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20">
+                    <i class="fas fa-file-pdf"></i> View & Download Resume
+                </a>
+
+                <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
+                    <span>Connect directly:</span>
+                    <div class="flex gap-2">
+                        <a href="https://github.com/Ravigupta9565" target="_blank" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white" title="Primary GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://github.com/Raviguptaji9565" target="_blank" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white" title="Secondary GitHub">
+                            <i class="fab fa-github-alt"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ravi-gupta-462652337/" target="_blank" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-brand-400" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:raviguptaji775309@gmail.com" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-brand-400" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- ===================================================================
+             1. ABOUT SECTION
+             =================================================================== -->
+        <section id="about" class="relative py-16 sm:py-24 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Hero Left: Bio, Goals & Target Roles -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-brand-500/30 text-brand-300 text-xs font-medium backdrop-blur-md shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Available for Data Science & ML Engineering Internships</span>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Hi, I'm <span class="gradient-text">Ravi Gupta</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-slate-300 font-medium mt-2">
+                            <span id="typewriter" class="text-brand-400 font-semibold">Data Science &amp; ML Engineering Aspirant</span>
+                            <span class="typewriter-cursor">|</span>
+                        </p>
+                    </div>
+
+                    <!-- Professional Bio -->
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        A forward-thinking <strong class="text-white">Computer Science & Engineering student (B.Tech 3rd Year)</strong> at 
+                        <strong class="text-white">Babu Banarasi Das University, Lucknow</strong>, specializing in 
+                        <span class="text-brand-400 font-medium">Cloud Computing & Machine Learning</span>. 
+                        Dedicated to turning complex data into actionable intelligence through predictive modeling, statistical exploratory data analysis, and scalable backend integrations.
+                    </p>
+
+                    <!-- Target Roles Badges -->
+                    <div class="space-y-2">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Target Roles & Specializations:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="role-badge">
+                                <i class="fas fa-chart-line text-cyan-400"></i> Data Science Internships
+                            </span>
+                            <span class="role-badge">
+                                <i class="fas fa-robot text-purple-400"></i> Machine Learning Engineering
+                            </span>
+                            <span class="role-badge">
+                                <i class="fas fa-cloud text-blue-400"></i> Cloud & Backend Systems
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact & Coordinates Card -->
+                    <div class="p-4 rounded-2xl glass-card border border-slate-800/80 space-y-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                            <!-- Email with One-Click Copy -->
+                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="flex items-center gap-2.5 overflow-hidden">
+                                    <i class="fas fa-envelope text-brand-400 text-sm"></i>
+                                    <a href="mailto:raviguptaji775309@gmail.com" class="text-slate-300 hover:text-white truncate text-xs sm:text-sm">raviguptaji775309@gmail.com</a>
+                                </div>
+                                <button onclick="copyToClipboard('raviguptaji775309@gmail.com', 'Email Address')" class="copy-btn text-slate-400 hover:text-brand-400 p-1" title="Copy Email">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+
+                            <!-- Phone with One-Click Copy -->
+                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="flex items-center gap-2.5 overflow-hidden">
+                                    <i class="fas fa-phone-alt text-emerald-400 text-sm"></i>
+                                    <a href="tel:+919565586227" class="text-slate-300 hover:text-white text-xs sm:text-sm">+91 9565586227</a>
+                                </div>
+                                <button onclick="copyToClipboard('+919565586227', 'Phone Number')" class="copy-btn text-slate-400 hover:text-emerald-400 p-1" title="Copy Phone">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="flex items-center gap-2.5 overflow-hidden">
+                                    <i class="fas fa-map-marker-alt text-rose-400 text-sm"></i>
+                                    <span class="text-slate-300 text-xs sm:text-sm">Lucknow / Basti, Uttar Pradesh</span>
+                                </div>
+                                <button onclick="copyToClipboard('Lucknow / Basti, Uttar Pradesh, India', 'Location')" class="copy-btn text-slate-400 hover:text-rose-400 p-1" title="Copy Location">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+
+                            <!-- University -->
+                            <div class="flex items-center p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="flex items-center gap-2.5 overflow-hidden">
+                                    <i class="fas fa-university text-amber-400 text-sm"></i>
+                                    <span class="text-slate-300 text-xs sm:text-sm truncate">BBD University, Lucknow</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dual GitHub & LinkedIn Profile Links -->
+                        <div class="pt-2 flex flex-wrap items-center gap-2 text-xs">
+                            <span class="text-slate-400 font-medium">Profiles:</span>
+                            <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" 
+                               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 hover:border-brand-500/60 transition">
+                                <i class="fab fa-github text-brand-400"></i>
+                                <span>Primary GitHub: <strong>Ravigupta9565</strong></span>
+                            </a>
+                            <a href="https://github.com/Raviguptaji9565" target="_blank" rel="noopener noreferrer" 
+                               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 hover:border-brand-500/60 transition">
+                                <i class="fab fa-github-alt text-purple-400"></i>
+                                <span>Secondary GitHub: <strong>Raviguptaji9565</strong></span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ravi-gupta-462652337/" target="_blank" rel="noopener noreferrer" 
+                               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-blue-900/40 text-slate-200 border border-slate-700 hover:border-blue-500/60 transition">
+                                <i class="fab fa-linkedin text-blue-400"></i>
+                                <span>LinkedIn: <strong>Ravi Gupta</strong></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Row -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 via-indigo-600 to-purple-600 hover:from-brand-400 hover:to-purple-500 text-white font-semibold text-sm shadow-xl shadow-brand-500/25 hover:shadow-brand-500/40 transition-all flex items-center gap-2.5">
+                            <span>Explore Projects (7)</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#resume" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-brand-300 hover:text-white border border-brand-500/30 hover:border-brand-400 font-semibold text-sm transition-all flex items-center gap-2.5 shadow-md">
+                            <i class="fas fa-file-pdf text-rose-400"></i>
+                            <span>View Resume</span>
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 font-semibold text-sm transition-all flex items-center gap-2.5">
+                            <i class="fas fa-comments text-emerald-400"></i>
+                            <span>Let's Talk</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Profile Card with Multi-Stage Fallback Image -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm sm:max-w-md">
+                        <!-- Glowing Backdrops -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-500 via-purple-600 to-cyan-400 rounded-3xl blur-xl opacity-40 group-hover:opacity-75 transition duration-1000 animate-tilt"></div>
+                        
+                        <div class="relative rounded-3xl glass-card p-6 border border-slate-700/60 overflow-hidden shadow-2xl">
+                            <!-- Top Window Controls -->
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-5">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                                </div>
+                                <span class="text-xs font-mono text-brand-400 font-semibold flex items-center gap-1.5">
+                                    <i class="fas fa-shield-halved text-[10px]"></i> ravi-gupta.ds.ml
+                                </span>
+                            </div>
+
+                            <!-- Profile Image Container with Multi-Stage Fallback -->
+                            <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 shadow-inner group">
+                                <img id="profileImage" 
+                                     src="WhatsApp Image 2026-10-26 at 1.48.33 AM.jpeg" 
+                                     alt="Ravi Gupta - Data Science & Machine Learning" 
+                                     class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"
+                                     loading="eager">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-60"></div>
+                                
+                                <!-- Floating Quick Tag -->
+                                <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/80 backdrop-blur-md border border-slate-800/80 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-xs font-semibold text-white">Ravi Gupta</p>
+                                        <p class="text-[11px] text-brand-400 font-mono">B.Tech CSE 3rd Year</p>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded-md bg-brand-500/20 text-brand-300 text-[10px] font-semibold border border-brand-500/30">
+                                        Cloud & ML
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Quick Stats Row Under Profile -->
+                            <div class="grid grid-cols-3 gap-2 mt-5 text-center">
+                                <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                    <span class="text-lg font-bold text-white block">7+</span>
+                                    <span class="text-[10px] text-slate-400 font-medium">Core Projects</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                    <span class="text-lg font-bold text-cyan-400 block">3rd</span>
+                                    <span class="text-[10px] text-slate-400 font-medium">Year CSE</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                    <span class="text-lg font-bold text-purple-400 block">4+</span>
+                                    <span class="text-[10px] text-slate-400 font-medium">Certificates</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             2. SKILLS SECTION
+             =================================================================== -->
+        <section id="skills" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-wider border border-brand-500/20">
+                    <i class="fas fa-layer-group"></i> Core Competencies
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Skills & Technical Arsenal
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Mastered across production algorithms, exploratory data modeling, distributed databases, and high-performance full-stack architectures.
+                </p>
+            </div>
+
+            <!-- Categorized Skills Cards Grid (3 Cards) -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Category 1: Programming -->
+                <div class="glass-card rounded-2xl p-6 sm:p-7 border border-slate-800 relative hover:border-cyan-500/40 transition-all duration-300 group">
+                    <div class="flex items-center gap-3.5 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">Programming</h3>
+                            <span class="text-xs text-slate-400 font-medium">Core Languages & Paradigms</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Bars -->
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fab fa-python text-yellow-400"></i> Python</span>
+                                <span class="text-cyan-400 font-mono">92%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-cyan-400" data-width="92%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-database text-blue-400"></i> SQL (MySQL)</span>
+                                <span class="text-cyan-400 font-mono">88%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-cyan-400" data-width="88%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fab fa-java text-rose-400"></i> Java</span>
+                                <span class="text-cyan-400 font-mono">80%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-cyan-400" data-width="80%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-laptop-code text-indigo-400"></i> C / C++</span>
+                                <span class="text-cyan-400 font-mono">82%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-cyan-400" data-width="82%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fab fa-js text-amber-400"></i> JavaScript</span>
+                                <span class="text-cyan-400 font-mono">85%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-cyan-400" data-width="85%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fab fa-js-square text-blue-500"></i> TypeScript</span>
+                                <span class="text-cyan-400 font-mono">78%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-cyan-400" data-width="78%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Badges Pills -->
+                    <div class="mt-6 pt-5 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+                        <span class="skill-pill">OOP</span>
+                        <span class="skill-pill">DSA</span>
+                        <span class="skill-pill">Algorithms</span>
+                        <span class="skill-pill">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Category 2: Data Science & ML -->
+                <div class="glass-card rounded-2xl p-6 sm:p-7 border border-slate-800 relative hover:border-purple-500/40 transition-all duration-300 group">
+                    <div class="flex items-center gap-3.5 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">Data Science & ML</h3>
+                            <span class="text-xs text-slate-400 font-medium">Modeling, EDA & Analytics</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Bars -->
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-table text-indigo-400"></i> Pandas</span>
+                                <span class="text-purple-400 font-mono">90%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-purple-400" data-width="90%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-square-root-variable text-cyan-400"></i> NumPy</span>
+                                <span class="text-purple-400 font-mono">90%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-purple-400" data-width="90%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-cogs text-amber-400"></i> Scikit-Learn</span>
+                                <span class="text-purple-400 font-mono">86%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-purple-400" data-width="86%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-camera text-emerald-400"></i> OpenCV</span>
+                                <span class="text-purple-400 font-mono">82%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-purple-400" data-width="82%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-chart-pie text-blue-400"></i> Matplotlib</span>
+                                <span class="text-purple-400 font-mono">88%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-purple-400" data-width="88%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-chart-area text-teal-400"></i> Seaborn</span>
+                                <span class="text-purple-400 font-mono">88%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-purple-400" data-width="88%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Badges Pills -->
+                    <div class="mt-6 pt-5 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+                        <span class="skill-pill">Random Forest</span>
+                        <span class="skill-pill">Classification</span>
+                        <span class="skill-pill">Regression</span>
+                        <span class="skill-pill">EDA</span>
+                    </div>
+                </div>
+
+                <!-- Category 3: Web & Cloud -->
+                <div class="glass-card rounded-2xl p-6 sm:p-7 border border-slate-800 relative hover:border-blue-500/40 transition-all duration-300 group">
+                    <div class="flex items-center gap-3.5 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fas fa-cloud-arrow-up"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Web & Cloud</h3>
+                            <span class="text-xs text-slate-400 font-medium">Frameworks, DBs & Hosting</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Bars -->
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-pepper-hot text-red-400"></i> Flask</span>
+                                <span class="text-blue-400 font-mono">88%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-blue-400" data-width="88%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-bolt text-teal-400"></i> FastAPI</span>
+                                <span class="text-blue-400 font-mono">82%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-blue-400" data-width="82%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-globe text-cyan-400"></i> Next.js</span>
+                                <span class="text-blue-400 font-mono">80%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-blue-400" data-width="80%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-wind text-sky-400"></i> Tailwind CSS</span>
+                                <span class="text-blue-400 font-mono">92%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-blue-400" data-width="92%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-database text-amber-400"></i> SQLite</span>
+                                <span class="text-blue-400 font-mono">86%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-blue-400" data-width="86%"></div></div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-1.5">
+                                <span class="text-slate-200 flex items-center gap-1.5"><i class="fas fa-server text-indigo-400"></i> Vercel / Render</span>
+                                <span class="text-blue-400 font-mono">85%</span>
+                            </div>
+                            <div class="skill-track"><div class="skill-fill bg-blue-400" data-width="85%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Badges Pills -->
+                    <div class="mt-6 pt-5 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+                        <span class="skill-pill">CI/CD</span>
+                        <span class="skill-pill">Git / GitHub</span>
+                        <span class="skill-pill">Docker Concepts</span>
+                        <span class="skill-pill">Cloud Deploy</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             3. PROJECTS SECTION
+             =================================================================== -->
+        <section id="projects" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-semibold uppercase tracking-wider border border-purple-500/20">
+                    <i class="fas fa-code-branch"></i> Engineering Portfolio
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Featured Projects & Systems
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    7 battle-tested applications spanning production machine learning, real-time computer vision, data pipeline engineering, and web security.
+                </p>
+            </div>
+
+            <!-- Filter Tabs [All, AI & ML, Data Analytics, Cybersecurity & Web] -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+                <button class="project-filter-btn active" data-filter="all">
+                    <i class="fas fa-border-all"></i> All Projects (7)
+                </button>
+                <button class="project-filter-btn" data-filter="ai-ml">
+                    <i class="fas fa-brain"></i> AI & ML
+                </button>
+                <button class="project-filter-btn" data-filter="data-analytics">
+                    <i class="fas fa-chart-pie"></i> Data Analytics
+                </button>
+                <button class="project-filter-btn" data-filter="cyber-web">
+                    <i class="fas fa-shield-virus"></i> Cybersecurity & Web
+                </button>
+            </div>
+
+            <!-- Project Cards Grid (EXACTLY 7 PROJECTS) -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                
+                <!-- 1. SmartHealth AI -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="ai-ml cyber-web">
+                    <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-brand-950/40 via-slate-900/60 to-slate-950 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30 flex items-center gap-1.5">
+                                <i class="fas fa-heart-pulse"></i> AI & ML / Web
+                            </span>
+                            <span class="text-xs font-mono text-emerald-400 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live on Vercel
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">SmartHealth AI</h3>
+                        <p class="text-xs text-brand-300 font-mono">Next.js • Python • Tailwind CSS • Vercel</p>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            AI-assisted clinical triage and symptom analysis platform. Built as Group Lead, integrating a Next.js responsive frontend with a Python-powered medical inference backend to generate instant triage risk scores.
+                        </p>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Key Architecture:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-pill">Next.js</span>
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">Tailwind CSS</span>
+                                <span class="tech-pill">Vercel Cloud</span>
+                                <span class="tech-pill">REST API</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                            <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-300 hover:text-brand-400 font-medium flex items-center gap-1.5 transition">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                            <button onclick="openProjectModal('smarthealth')" class="text-xs text-brand-400 hover:text-white font-semibold flex items-center gap-1 transition">
+                                Details <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Smart Cyber Threat & Phishing URL Analyzer -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="cyber-web ai-ml">
+                    <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-rose-950/40 via-slate-900/60 to-slate-950 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1.5">
+                                <i class="fas fa-shield-halved"></i> Cybersecurity
+                            </span>
+                            <span class="text-xs font-mono text-cyan-400">Heuristic Engine</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Smart Threat & Phishing Analyzer</h3>
+                        <p class="text-xs text-rose-300 font-mono">Flask • SQLite • Heuristics • Python</p>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Automated URL risk scanner inspecting entropy levels, IP obfuscation, lexical red flags, and deceptive subdomain structures to detect zero-day phishing vectors with instant risk stratification.
+                        </p>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Key Architecture:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-pill">Flask</span>
+                                <span class="tech-pill">SQLite</span>
+                                <span class="tech-pill">Shannon Entropy</span>
+                                <span class="tech-pill">Heuristics</span>
+                                <span class="tech-pill">Security</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                            <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-300 hover:text-brand-400 font-medium flex items-center gap-1.5 transition">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                            <button onclick="openProjectModal('phishing')" class="text-xs text-brand-400 hover:text-white font-semibold flex items-center gap-1 transition">
+                                Details <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. AttendanceOS -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="ai-ml cyber-web">
+                    <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-cyan-950/40 via-slate-900/60 to-slate-950 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
+                                <i class="fas fa-eye"></i> Computer Vision
+                            </span>
+                            <span class="text-xs font-mono text-emerald-400">98% Accuracy</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">AttendanceOS</h3>
+                        <p class="text-xs text-cyan-300 font-mono">Python • OpenCV • Flask • SQLite</p>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Smart biometric facial recognition attendance platform. Processes real-time camera frames, matches facial landmarks against enrolled student vectors, and synchronizes logs into an administrative SQLite database.
+                        </p>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Key Architecture:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">OpenCV</span>
+                                <span class="tech-pill">Flask</span>
+                                <span class="tech-pill">SQLite</span>
+                                <span class="tech-pill">Biometrics</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                            <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-300 hover:text-brand-400 font-medium flex items-center gap-1.5 transition">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                            <button onclick="openProjectModal('attendance')" class="text-xs text-brand-400 hover:text-white font-semibold flex items-center gap-1 transition">
+                                Details <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Kisan Sahayak -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="ai-ml">
+                    <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-emerald-950/40 via-slate-900/60 to-slate-950 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+                                <i class="fas fa-seedling"></i> AgriTech & AI
+                            </span>
+                            <span class="text-xs font-mono text-emerald-400">Deep Learning</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Kisan Sahayak</h3>
+                        <p class="text-xs text-emerald-300 font-mono">Python • CNN / DL • OpenCV • Flask</p>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            AI crop disease detection tool designed for agricultural empowerment. Classifies leaf pathogens, blight, and pest damage from smartphone snapshots, providing farmers with instant remediation recommendations.
+                        </p>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Key Architecture:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-pill">Computer Vision</span>
+                                <span class="tech-pill">CNNs</span>
+                                <span class="tech-pill">OpenCV</span>
+                                <span class="tech-pill">Flask</span>
+                                <span class="tech-pill">AgriTech</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                            <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-300 hover:text-brand-400 font-medium flex items-center gap-1.5 transition">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                            <button onclick="openProjectModal('kisan')" class="text-xs text-brand-400 hover:text-white font-semibold flex items-center gap-1 transition">
+                                Details <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. AI Finance Analyzer -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="ai-ml data-analytics">
+                    <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-amber-950/40 via-slate-900/60 to-slate-950 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
+                                <i class="fas fa-coins"></i> FinTech & Analytics
+                            </span>
+                            <span class="text-xs font-mono text-amber-400">Statistical Models</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">AI Finance Analyzer</h3>
+                        <p class="text-xs text-amber-300 font-mono">Python • Pandas • NumPy • Seaborn</p>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Algorithmic financial health and expenditure analytics platform. Automatically ingests statements, models spending variances, computes Sharpe ratio metrics, and charts statistical distributions.
+                        </p>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Key Architecture:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-pill">Pandas</span>
+                                <span class="tech-pill">NumPy</span>
+                                <span class="tech-pill">Seaborn</span>
+                                <span class="tech-pill">Variance Modeling</span>
+                                <span class="tech-pill">FinTech</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                            <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-300 hover:text-brand-400 font-medium flex items-center gap-1.5 transition">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                            <button onclick="openProjectModal('finance')" class="text-xs text-brand-400 hover:text-white font-semibold flex items-center gap-1 transition">
+                                Details <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Customer Churn Prediction -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="data-analytics ai-ml">
+                    <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-purple-950/40 via-slate-900/60 to-slate-950 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center gap-1.5">
+                                <i class="fas fa-chart-line"></i> Predictive ML
+                            </span>
+                            <span class="text-xs font-mono text-purple-400">10k+ Rows EDA</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Customer Churn Prediction</h3>
+                        <p class="text-xs text-purple-300 font-mono">10k+ rows EDA • Scikit-Learn • Random Forest</p>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            End-to-end customer churn classification system trained on 10,000+ customer records. Evaluated multiple baseline classifiers, optimized Random Forest hyperparameters, and extracted decisive feature importances.
+                        </p>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Key Architecture:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-pill">Random Forest</span>
+                                <span class="tech-pill">Scikit-Learn</span>
+                                <span class="tech-pill">10k+ Rows</span>
+                                <span class="tech-pill">ROC-AUC 0.89</span>
+                                <span class="tech-pill">Feature Importance</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                            <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-300 hover:text-brand-400 font-medium flex items-center gap-1.5 transition">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                            <button onclick="openProjectModal('churn')" class="text-xs text-brand-400 hover:text-white font-semibold flex items-center gap-1 transition">
+                                Details <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Sales Data Analysis Pipeline -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-800 flex flex-col" data-category="data-analytics">
+                    <div class="p-6 border-b border-slate-800/70 bg-gradient-to-br from-indigo-950/40 via-slate-900/60 to-slate-950 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5">
+                                <i class="fas fa-database"></i> Data Pipeline & ETL
+                            </span>
+                            <span class="text-xs font-mono text-cyan-400">MySQL CTEs</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Sales Data Analysis Pipeline</h3>
+                        <p class="text-xs text-indigo-300 font-mono">MySQL Window Functions • CTEs • ETL</p>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Enterprise database analytics architecture analyzing transaction streams. Employs advanced SQL Common Table Expressions (CTEs), rolling 30-day window functions, and automated ETL staging scripts.
+                        </p>
+
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Key Architecture:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tech-pill">MySQL</span>
+                                <span class="tech-pill">Window Functions</span>
+                                <span class="tech-pill">CTEs</span>
+                                <span class="tech-pill">ETL Pipelines</span>
+                                <span class="tech-pill">Cohort Queries</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                            <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-300 hover:text-brand-400 font-medium flex items-center gap-1.5 transition">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                            <button onclick="openProjectModal('sales')" class="text-xs text-brand-400 hover:text-white font-semibold flex items-center gap-1 transition">
+                                Details <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             4. EXPERIENCE SECTION
+             =================================================================== -->
+        <section id="experience" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold uppercase tracking-wider border border-blue-500/20">
+                    <i class="fas fa-briefcase"></i> Track Record & Engineering
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Experience & Project Leadership
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Practical engineering milestones, hackathons, cross-functional project leadership, and real-world system deployments.
+                </p>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div class="relative border-l-2 border-slate-800 ml-4 sm:ml-8 md:ml-32 space-y-12">
+                
+                <!-- Timeline 1: SmartHealth AI Group Lead -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-7 border border-slate-800 group-hover:border-brand-500/40 transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                                    Project Leadership & Architecture
+                                </span>
+                                <h3 class="text-xl font-bold text-white mt-1">Group Lead & Full-Stack ML Engineer</h3>
+                                <p class="text-sm text-brand-400 font-medium">SmartHealth AI Initiative • Babu Banarasi Das University</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800 w-fit">
+                                2024 – Present
+                            </span>
+                        </div>
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+                            <li>Spearheaded a 4-engineer project squad architecting an intelligent medical triage diagnosis platform.</li>
+                            <li>Integrated responsive Next.js frontend with lightweight Python machine learning microservice on Vercel.</li>
+                            <li>Implemented client-side input validation and error handling, reducing diagnostic latency to under 200ms.</li>
+                            <li>Coordinated sprint reviews, Git feature branch workflows, and system integration testing.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline 2: AttendanceOS Engineering -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-7 border border-slate-800 group-hover:border-cyan-500/40 transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                                    Computer Vision & Backend
+                                </span>
+                                <h3 class="text-xl font-bold text-white mt-1">Machine Learning & System Engineering Lead</h3>
+                                <p class="text-sm text-cyan-400 font-medium">AttendanceOS • Smart Campus System</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800 w-fit">
+                                2024
+                            </span>
+                        </div>
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+                            <li>Engineered real-time facial feature vector extraction pipeline utilizing Python and OpenCV.</li>
+                            <li>Constructed automated SQLite transaction schema logging timestamped classroom entries with zero manual intervention.</li>
+                            <li>Developed administrative web dashboard in Flask enabling instantaneous CSV attendance report generation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline 3: Phishing Analyzer & Cybersecurity -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-7 border border-slate-800 group-hover:border-purple-500/40 transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                                    Data Security & Heuristics
+                                </span>
+                                <h3 class="text-xl font-bold text-white mt-1">Security Systems & Threat Analysis Engineer</h3>
+                                <p class="text-sm text-purple-400 font-medium">Cyber Threat & Phishing URL Analyzer</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800 w-fit">
+                                2023 – 2024
+                            </span>
+                        </div>
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+                            <li>Formulated multi-factor URL classification heuristics incorporating Shannon entropy, obfuscated redirects, and domain age.</li>
+                            <li>Built clean Flask REST endpoints handling threat score queries with sub-second execution.</li>
+                            <li>Compiled malicious URL benchmark dataset for validating heuristic accuracy against live phishing feeds.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline 4: Academic Leadership & Hackathons -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-7 border border-slate-800 group-hover:border-emerald-500/40 transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                    Hackathons & Innovation
+                                </span>
+                                <h3 class="text-xl font-bold text-white mt-1">Hackathon Competitor & Academic Peer Mentor</h3>
+                                <p class="text-sm text-emerald-400 font-medium">BBD University Technical Community</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800 w-fit">
+                                2024
+                            </span>
+                        </div>
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+                            <li>Represented CSE department in competitive collegiate hackathons solving real-world agricultural and healthcare problems.</li>
+                            <li>Mentored fellow students on Python data science workflows, NumPy matrix manipulation, and GitHub collaborative etiquette.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             5. CERTIFICATES SECTION
+             =================================================================== -->
+        <section id="certificates" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider border border-emerald-500/20">
+                    <i class="fas fa-stamp"></i> Industry Credentials
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Technical Certifications & Badges
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Verified technical credentials recognizing deep competence across Generative AI, Cloud Infrastructure, Machine Learning, and Relational Database Engineering.
+                </p>
+            </div>
+
+            <!-- Certifications Grid (4 Required Credentials) -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Cert 1: TCS iON Generative AI -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300 group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                Verified
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">TCS iON Generative AI</h3>
+                            <p class="text-xs text-slate-400 mt-1">Tata Consultancy Services • iON Learning</p>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Foundations of Large Language Models (LLMs), attention mechanisms, prompt engineering, generative architectures, and enterprise AI safety protocols.
+                        </p>
+                    </div>
+
+                    <div class="pt-5 border-t border-slate-800/80 mt-5 flex items-center justify-between text-xs">
+                        <span class="text-slate-400 font-mono">TCS-iON-GENAI</span>
+                        <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                            <i class="fas fa-check-circle"></i> Certified
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Cert 2: Cloud Computing & ML Academic Specialization -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between hover:border-blue-500/40 transition-all duration-300 group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                                Academic
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Cloud Computing & ML</h3>
+                            <p class="text-xs text-slate-400 mt-1">Babu Banarasi Das University, Lucknow</p>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Specialized university degree track curriculum covering distributed cloud design, ML model deployment, virtualization, and computational scalability.
+                        </p>
+                    </div>
+
+                    <div class="pt-5 border-t border-slate-800/80 mt-5 flex items-center justify-between text-xs">
+                        <span class="text-slate-400 font-mono">BBDU-SPEC-CCML</span>
+                        <span class="text-blue-400 font-semibold flex items-center gap-1">
+                            <i class="fas fa-check-circle"></i> Enrolled/Honors
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Cert 3: Python for Data Science & ML Credential -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between hover:border-yellow-500/40 transition-all duration-300 group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
+                                Verified
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">Python for Data Science & ML</h3>
+                            <p class="text-xs text-slate-400 mt-1">Data Science Professional Academy</p>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Practical training in Pandas, NumPy array broadcasting, Scikit-Learn pipelines, supervised regression/classification, and hyperparameter tuning.
+                        </p>
+                    </div>
+
+                    <div class="pt-5 border-t border-slate-800/80 mt-5 flex items-center justify-between text-xs">
+                        <span class="text-slate-400 font-mono">PY-DS-ML-2024</span>
+                        <span class="text-yellow-400 font-semibold flex items-center gap-1">
+                            <i class="fas fa-check-circle"></i> Certified
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Cert 4: Advanced SQL & Database Systems -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between hover:border-cyan-500/40 transition-all duration-300 group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                                Verified
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">Advanced SQL & Databases</h3>
+                            <p class="text-xs text-slate-400 mt-1">Relational Database Systems Academy</p>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Mastery of complex multi-table joins, subqueries, Common Table Expressions (CTEs), window analytical functions, and schema query optimization.
+                        </p>
+                    </div>
+
+                    <div class="pt-5 border-t border-slate-800/80 mt-5 flex items-center justify-between text-xs">
+                        <span class="text-slate-400 font-mono">SQL-ADV-DB-01</span>
+                        <span class="text-cyan-400 font-semibold flex items-center gap-1">
+                            <i class="fas fa-check-circle"></i> Certified
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             6. RESUME SECTION
+             =================================================================== -->
+        <section id="resume" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 text-xs font-semibold uppercase tracking-wider border border-rose-500/20">
+                    <i class="fas fa-file-invoice"></i> Verified Curriculum Vitae
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Resume & Technical Profile
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Comprehensive overview of academic qualifications, technical proficiencies, project milestones, and contact channels.
+                </p>
+            </div>
+
+            <!-- Resume Container with Interactive Preview Card -->
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-card rounded-3xl border border-slate-800 overflow-hidden shadow-2xl relative">
+                    
+                    <!-- Top Bar with Actions -->
+                    <div class="p-6 bg-slate-900/90 border-b border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-lg">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Ravi_Gupta_Resume.pdf</h3>
+                                <p class="text-xs text-slate-400">Targeting: Data Science & ML Engineering Internships</p>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                            <!-- Prominent Download Resume PDF Button -->
+                            <a href="assets/Ravi_Gupta_Resume.pdf" download="Ravi_Gupta_Resume.pdf" id="downloadResumeBtn"
+                               class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-600 hover:from-brand-400 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-brand-500/25 transition flex items-center justify-center gap-2">
+                                <i class="fas fa-download"></i>
+                                <span>Download Resume (PDF)</span>
+                            </a>
+                            <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-medium border border-slate-700 transition flex items-center justify-center gap-2">
+                                <i class="fas fa-print"></i>
+                                <span>Print</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PDF Document Style Preview Card -->
+                    <div class="p-6 sm:p-10 bg-slate-950/90 text-slate-200 font-sans space-y-8 select-text">
+                        
+                        <!-- Document Header -->
+                        <div class="border-b border-slate-800 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">RAVI GUPTA</h2>
+                                <p class="text-brand-400 font-medium text-sm mt-1">Aspiring Data Scientist & Machine Learning Engineer</p>
+                                <p class="text-slate-400 text-xs mt-0.5">B.Tech in Computer Science and Engineering (3rd Year) • BBD University, Lucknow</p>
+                            </div>
+                            <div class="text-xs text-slate-300 space-y-1">
+                                <p><i class="fas fa-envelope text-brand-400 w-4"></i> raviguptaji775309@gmail.com</p>
+                                <p><i class="fas fa-phone text-emerald-400 w-4"></i> +91 9565586227</p>
+                                <p><i class="fas fa-map-marker-alt text-rose-400 w-4"></i> Lucknow / Basti, Uttar Pradesh</p>
+                                <p><i class="fab fa-github text-purple-400 w-4"></i> github.com/Ravigupta9565</p>
+                            </div>
+                        </div>
+
+                        <!-- Professional Summary -->
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-400 border-b border-slate-800 pb-1 flex items-center gap-2">
+                                <i class="fas fa-user text-xs"></i> Professional Summary
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                Results-oriented B.Tech Computer Science student specializing in Cloud Computing & Machine Learning. Hands-on experience developing end-to-end data pipelines, exploratory data analysis workflows on 10,000+ rows, computer vision biometrics with OpenCV, and machine learning triage applications. Proven leadership as Group Lead for SmartHealth AI and hackathon contributor. Seeking high-impact Data Science or Machine Learning internships.
+                            </p>
+                        </div>
+
+                        <!-- Technical Skills Matrix -->
+                        <div class="space-y-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-400 border-b border-slate-800 pb-1 flex items-center gap-2">
+                                <i class="fas fa-wrench text-xs"></i> Technical Competencies
+                            </h4>
+                            <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                    <span class="font-bold text-white block mb-1">Programming:</span>
+                                    <span class="text-slate-300">Python, SQL (MySQL), Java, C/C++, JavaScript, TypeScript</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                    <span class="font-bold text-white block mb-1">Data Science & ML:</span>
+                                    <span class="text-slate-300">Pandas, NumPy, Scikit-Learn, OpenCV, Matplotlib, Seaborn</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                    <span class="font-bold text-white block mb-1">Web & Cloud:</span>
+                                    <span class="text-slate-300">Flask, FastAPI, Next.js, Tailwind CSS, SQLite, Vercel/Render</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured Project Highlights in Resume -->
+                        <div class="space-y-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-400 border-b border-slate-800 pb-1 flex items-center gap-2">
+                                <i class="fas fa-diagram-project text-xs"></i> Selected Engineering Projects
+                            </h4>
+                            <div class="space-y-3 text-xs">
+                                <div>
+                                    <div class="flex justify-between font-bold text-white">
+                                        <span>SmartHealth AI (Group Lead)</span>
+                                        <span class="text-slate-400 font-mono">Next.js, Python, Tailwind, Vercel</span>
+                                    </div>
+                                    <p class="text-slate-300 mt-0.5">Architected AI medical triage application leading a 4-person team. Connected Next.js UI to Python ML services with &lt;200ms latency.</p>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between font-bold text-white">
+                                        <span>Smart Cyber Threat & Phishing URL Analyzer</span>
+                                        <span class="text-slate-400 font-mono">Flask, SQLite, Heuristics</span>
+                                    </div>
+                                    <p class="text-slate-300 mt-0.5">Implemented entropy and lexical analysis heuristics detecting deceptive domain structures and malicious redirects.</p>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between font-bold text-white">
+                                        <span>Customer Churn Prediction (10k+ rows)</span>
+                                        <span class="text-slate-400 font-mono">Scikit-Learn, Random Forest, EDA</span>
+                                    </div>
+                                    <p class="text-slate-300 mt-0.5">Executed end-to-end exploratory modeling on 10,000+ customer records achieving 0.89+ ROC-AUC and extracting high-impact business drivers.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education & Certifications Summary in Resume -->
+                        <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-brand-400 border-b border-slate-800 pb-1 flex items-center gap-2">
+                                    <i class="fas fa-graduation-cap text-xs"></i> Education
+                                </h4>
+                                <div class="mt-2 text-xs space-y-1">
+                                    <p class="font-bold text-white">B.Tech in Computer Science & Engineering</p>
+                                    <p class="text-brand-300">Spec: Cloud Computing & Machine Learning</p>
+                                    <p class="text-slate-400">Babu Banarasi Das University, Lucknow (2024–Present)</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-brand-400 border-b border-slate-800 pb-1 flex items-center gap-2">
+                                    <i class="fas fa-award text-xs"></i> Certifications
+                                </h4>
+                                <div class="mt-2 text-xs space-y-1 text-slate-300">
+                                    <p>• TCS iON Generative AI Certification</p>
+                                    <p>• Cloud Computing & ML Academic Specialization</p>
+                                    <p>• Python for Data Science & Machine Learning</p>
+                                    <p>• Advanced SQL & Database Systems</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Bottom Bar CTA -->
+                    <div class="p-4 bg-slate-900 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                        <span>Need a customized CV or letter of recommendation?</span>
+                        <a href="#contact" class="text-brand-400 hover:text-white font-semibold transition">Contact Ravi Directly &rarr;</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             7. EDUCATION SECTION
+             =================================================================== -->
+        <section id="education" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-semibold uppercase tracking-wider border border-indigo-500/20">
+                    <i class="fas fa-graduation-cap"></i> Academic Qualifications
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Education & Foundations
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Formal computer science education and foundational science coursework underpinning algorithmic analytical proficiency.
+                </p>
+            </div>
+
+            <!-- Education Cards Grid (2 Required Milestones) -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- 1. B.Tech in CSE -->
+                <div class="glass-card rounded-2xl p-7 border border-slate-800 relative hover:border-brand-500/40 transition-all duration-300 group flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-500/20 text-brand-300 border border-brand-500/30 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 3rd Year (Active)
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">2024 – Present</span>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">
+                                Bachelor of Technology (B.Tech)
+                            </h3>
+                            <p class="text-sm font-semibold text-brand-300 mt-1">Computer Science and Engineering</p>
+                            <p class="text-xs text-purple-400 font-mono mt-0.5">Specialization: Cloud Computing & Machine Learning</p>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-sm text-slate-300 font-medium">
+                            <i class="fas fa-university text-brand-400"></i>
+                            <span>Babu Banarasi Das University, Lucknow</span>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Undergoing in-depth training in core computer science, distributed cloud infrastructure, applied machine learning algorithms, database architectures, and data structure optimizations.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-slate-800/80">
+                        <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-2">Key Coursework:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="skill-pill">Machine Learning</span>
+                            <span class="skill-pill">Cloud Architecture</span>
+                            <span class="skill-pill">Data Structures (DSA)</span>
+                            <span class="skill-pill">DBMS & SQL</span>
+                            <span class="skill-pill">Operating Systems</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Higher Secondary Education -->
+                <div class="glass-card rounded-2xl p-7 border border-slate-800 relative hover:border-cyan-500/40 transition-all duration-300 group flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                                Completed
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">2021 – 2023</span>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                Higher Secondary Education (Class XII)
+                            </h3>
+                            <p class="text-sm font-semibold text-cyan-300 mt-1">Science Stream (Physics, Chemistry, Mathematics)</p>
+                            <p class="text-xs text-slate-400 font-mono mt-0.5">Senior Secondary Certificate</p>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-sm text-slate-300 font-medium">
+                            <i class="fas fa-school text-cyan-400"></i>
+                            <span>J.N.D.P. School</span>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Established foundational rigor in advanced mathematics, analytical reasoning, physics, and computer fundamentals, forming the bedrock for mathematical modeling in machine learning.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-slate-800/80">
+                        <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-2">Key Coursework:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="skill-pill">Mathematics</span>
+                            <span class="skill-pill">Physics</span>
+                            <span class="skill-pill">Chemistry</span>
+                            <span class="skill-pill">Computer Science</span>
+                            <span class="skill-pill">Calculus</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             8. CONTACT SECTION
+             =================================================================== -->
+        <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider border border-emerald-500/20">
+                    <i class="fas fa-paper-plane"></i> Get In Touch
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Let's Connect & Collaborate
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Interested in discussing a Data Science internship, Machine Learning engineering role, or open-source collaboration? Send a message below!
+                </p>
+            </div>
+
+            <!-- Contact Grid (Info on Left, Form on Right) -->
+            <div class="grid lg:grid-cols-12 gap-10">
+                
+                <!-- Left: Contact Details & Direct Channels -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-card rounded-2xl p-6 sm:p-7 border border-slate-800 space-y-6">
+                        <h3 class="text-lg font-bold text-white">Direct Communication Channels</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Email -->
+                            <div class="flex items-start justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-slate-400 block font-medium">Email Address</span>
+                                        <a href="mailto:raviguptaji775309@gmail.com" class="text-sm font-semibold text-white hover:text-brand-400 transition">
+                                            raviguptaji775309@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+                                <button onclick="copyToClipboard('raviguptaji775309@gmail.com', 'Email Address')" class="copy-btn text-slate-400 hover:text-brand-400 p-2" title="Copy Email">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="flex items-start justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-slate-400 block font-medium">Phone / WhatsApp</span>
+                                        <a href="tel:+919565586227" class="text-sm font-semibold text-white hover:text-emerald-400 transition">
+                                            +91 9565586227
+                                        </a>
+                                    </div>
+                                </div>
+                                <button onclick="copyToClipboard('+919565586227', 'Phone Number')" class="copy-btn text-slate-400 hover:text-emerald-400 p-2" title="Copy Phone">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="flex items-start justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-slate-400 block font-medium">Location</span>
+                                        <span class="text-sm font-semibold text-white">Lucknow / Basti, Uttar Pradesh</span>
+                                    </div>
+                                </div>
+                                <button onclick="copyToClipboard('Lucknow / Basti, Uttar Pradesh, India', 'Location')" class="copy-btn text-slate-400 hover:text-rose-400 p-2" title="Copy Location">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Dual GitHub Links Card -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
+                            <span class="text-xs font-semibold text-slate-300 block uppercase tracking-wider">GitHub Profiles:</span>
+                            <div class="space-y-2">
+                                <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" 
+                                   class="flex items-center justify-between p-2 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-800 transition group">
+                                    <div class="flex items-center gap-2 text-xs">
+                                        <i class="fab fa-github text-brand-400"></i>
+                                        <span class="text-slate-200 group-hover:text-white">Primary: <strong>Ravigupta9565</strong></span>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-[10px] text-slate-500 group-hover:text-brand-400"></i>
+                                </a>
+
+                                <a href="https://github.com/Raviguptaji9565" target="_blank" rel="noopener noreferrer" 
+                                   class="flex items-center justify-between p-2 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-800 transition group">
+                                    <div class="flex items-center gap-2 text-xs">
+                                        <i class="fab fa-github-alt text-purple-400"></i>
+                                        <span class="text-slate-200 group-hover:text-white">Secondary: <strong>Raviguptaji9565</strong></span>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-[10px] text-slate-500 group-hover:text-purple-400"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Response Time Note -->
+                        <div class="p-3.5 rounded-xl bg-brand-500/5 border border-brand-500/20 text-xs text-brand-300 flex items-center gap-2.5">
+                            <i class="fas fa-clock text-brand-400"></i>
+                            <span>Prompt replies guaranteed within 24 hours.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Interactive Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800">
+                        <h3 class="text-xl font-bold text-white mb-2">Send an Instant Message</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm mb-6">
+                            Fill out the form below. Messages trigger an instant confirmation and can be routed directly to Ravi's primary inbox.
+                        </p>
+
+                        <form id="contactForm" class="space-y-5" novalidate>
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="contactName" class="block text-xs font-semibold text-slate-300 mb-1.5">
+                                        Your Full Name <span class="text-rose-400">*</span>
+                                    </label>
+                                    <input type="text" id="contactName" name="name" required placeholder="e.g. Aditi Sharma"
+                                           class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                                    <p class="form-error hidden text-rose-400 text-xs mt-1" id="nameError">Please enter your name.</p>
+                                </div>
+
+                                <div>
+                                    <label for="contactEmail" class="block text-xs font-semibold text-slate-300 mb-1.5">
+                                        Your Email Address <span class="text-rose-400">*</span>
+                                    </label>
+                                    <input type="email" id="contactEmail" name="email" required placeholder="aditi@company.com"
+                                           class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                                    <p class="form-error hidden text-rose-400 text-xs mt-1" id="emailError">Please enter a valid email address.</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="contactSubject" class="block text-xs font-semibold text-slate-300 mb-1.5">
+                                    Subject / Interested Role
+                                </label>
+                                <select id="contactSubject" name="subject"
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                                    <option value="Data Science Internship">Data Science Internship Opportunity</option>
+                                    <option value="Machine Learning Engineering">Machine Learning Engineering Role</option>
+                                    <option value="Cloud / Backend Development">Cloud / Backend Development</option>
+                                    <option value="Project Collaboration">Open Source / Hackathon Collaboration</option>
+                                    <option value="General Inquiry">General Technical Inquiry</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="contactMessage" class="block text-xs font-semibold text-slate-300 mb-1.5">
+                                    Your Message <span class="text-rose-400">*</span>
+                                </label>
+                                <textarea id="contactMessage" name="message" rows="5" required placeholder="Share details about the role, project, or timeline..."
+                                          class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"></textarea>
+                                <p class="form-error hidden text-rose-400 text-xs mt-1" id="messageError">Please enter your message (at least 10 characters).</p>
+                            </div>
+
+                            <!-- Submission Status Banner -->
+                            <div id="formStatus" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
+                            <button type="submit" id="submitBtn"
+                                    class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-500 via-indigo-600 to-purple-600 hover:from-brand-400 hover:to-purple-500 text-white font-bold text-sm shadow-xl shadow-brand-500/25 transition-all flex items-center justify-center gap-2 group">
+                                <span id="submitText">Send Message</span>
+                                <i class="fas fa-paper-plane group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" id="submitIcon"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <div class="flex items-center gap-3 shrink-0">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-purple-600 flex items-center justify-center text-white shrink-0">
+                    <i class="fas fa-brain text-sm"></i>
+                </div>
+                <div>
+                    <span class="text-sm font-bold text-white block whitespace-nowrap">Ravi Gupta</span>
+                    <span class="text-[11px] text-slate-400 block whitespace-nowrap">Data Science & ML • B.Tech CSE (3rd Year) BBDU</span>
+                </div>
+            </div>
+
+            <!-- Quick Links to the 8 Sections -->
+            <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
+                <a href="#about" class="hover:text-brand-400 transition">About</a>
+                <a href="#skills" class="hover:text-brand-400 transition">Skills</a>
+                <a href="#projects" class="hover:text-brand-400 transition">Projects</a>
+                <a href="#experience" class="hover:text-brand-400 transition">Experience</a>
+                <a href="#certificates" class="hover:text-brand-400 transition">Certificates</a>
+                <a href="#resume" class="hover:text-brand-400 transition">Resume</a>
+                <a href="#education" class="hover:text-brand-400 transition">Education</a>
+                <a href="#contact" class="hover:text-brand-400 transition">Contact</a>
+            </div>
+
+            <!-- Social Links in Footer -->
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center transition" title="Primary GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://github.com/Raviguptaji9565" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center transition" title="Secondary GitHub">
+                    <i class="fab fa-github-alt"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ravi-gupta-462652337/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-blue-600/20 text-slate-300 hover:text-brand-400 flex items-center justify-center transition" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:raviguptaji775309@gmail.com" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-brand-400 flex items-center justify-center transition" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Back to Top Floating Button -->
+    <button id="backToTopBtn" class="fixed bottom-6 left-6 z-40 w-11 h-11 rounded-full bg-slate-900/90 text-brand-400 border border-slate-700/80 shadow-xl opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center hover:bg-brand-500 hover:text-white" aria-label="Back to Top">
+        <i class="fas fa-arrow-up text-sm"></i>
+    </button>
+
+    <!-- Project Details Interactive Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-card rounded-2xl max-w-2xl w-full border border-slate-700 p-6 sm:p-8 space-y-5 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="projectModalContent">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div id="modalIcon" class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-lg">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div>
+                        <h3 id="modalTitle" class="text-xl font-bold text-white">Project Title</h3>
+                        <p id="modalCategory" class="text-xs text-brand-400 font-mono">Category</p>
+                    </div>
+                </div>
+                <button onclick="closeProjectModal()" class="w-9 h-9 rounded-lg bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center transition">
+                    <i class="fas fa-times text-base"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4 text-sm text-slate-300">
+                <p id="modalDescription" class="leading-relaxed">Detailed project description goes here.</p>
+                
+                <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Core Highlights & Implementation:</span>
+                    <ul id="modalHighlights" class="space-y-1.5 text-xs text-slate-300 list-disc list-inside"></ul>
+                </div>
+
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-2">Technology Stack:</span>
+                    <div id="modalTechStack" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                <a id="modalGithubLink" href="https://github.com/Ravigupta9565" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold flex items-center gap-2 transition">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <button onclick="closeProjectModal()" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-medium transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
