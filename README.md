@@ -8,7 +8,7 @@
   <strong>Passionate about transforming raw data and cutting-edge machine learning models into high-performance, real-world software solutions.</strong>
 </p>
 
-[![Portfolio](https://img.shields.io/badge/Live_Portfolio-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white)](https://smart-healthcare-phi.vercel.app)
+[![Portfolio](https://img.shields.io/badge/Live_Portfolio-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-website-bay-theta-69.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Ravigupta9565-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ravigupta9565)
 [![LeetCode](https://img.shields.io/badge/LeetCode-Ravi956558-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/u/Ravi956558/)
 [![Email](https://img.shields.io/badge/Email-raviguptaji775309%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:raviguptaji775309@gmail.com)
@@ -63,8 +63,8 @@
 
 | Project | Description | Tech Stack | Links |
 | :--- | :--- | :--- | :--- |
+| **🏥 SmartHealth AI (Flagship)** | **AI-Powered Smart Healthcare System & Clinical Triage Platform** that delivers symptom analysis, triage priority categorization, and interactive medical diagnostics with sub-200ms API inference latency. Built as Group Lead. | `Next.js`, `Python`, `Tailwind CSS`, `Vercel`, `REST API` | [🌐 Live Demo](https://smart-healthcare-phi.vercel.app) • [💻 Code](https://github.com/Ravigupta9565) |
 | **🤖 DocuRAG - Local RAG Chatbot** | **Production Retrieval-Augmented Generation (RAG) system** for intelligent PDF document Q&A and semantic vector search. Employs chunking embeddings and context-grounded prompt chaining. | `Llama 3.3 70B`, `Groq API`, `FAISS`, `FastAPI`, `Python`, `Vercel` | [🌐 Live Demo](https://docurag-local-rag-chatbot.vercel.app) • [💻 Code](https://github.com/Ravigupta9565/docurag-local-rag-chatbot) |
-| **🏥 SmartHealth AI** | **AI Clinical Triage Platform** that delivers symptom analysis, triage priority categorization, and interactive medical diagnostics with sub-200ms API inference latency. | `Next.js`, `Python`, `Tailwind CSS`, `Vercel`, `REST API` | [🌐 Live Demo](https://smart-healthcare-phi.vercel.app) • [💻 Code](https://github.com/Ravigupta9565) |
 | **🛡️ Phishing URL Analyzer** | **Heuristic Zero-Day Phishing Detection Engine** evaluating Shannon entropy, raw IPv4 obfuscation, lexical deception patterns, and SSL cipher integrity in real time. | `Python`, `Flask`, `SQLite`, `Entropy Heuristics`, `Cybersecurity` | [🌐 Live Demo](https://phishing-url-analyzer-phi.vercel.app/) • [💻 Code](https://github.com/Ravigupta9565) |
 | **👁️ AttendanceOS** | **Biometric Facial Recognition Attendance System** capturing live camera feeds, extracting 128-d landmark facial vectors, and automating student check-in audits. | `Python`, `OpenCV`, `Haar Cascades`, `Flask`, `SQLite` | [💻 Repository](https://github.com/Ravigupta9565) |
 | **🌾 Kisan Sahayak** | **AI Crop Foliar Disease Classifier** diagnosing plant leaf blight, fungal rust, and pest damages from smartphone camera snapshots to assist rural farmers. | `Python`, `CNN / Deep Learning`, `OpenCV`, `Flask` | [💻 Repository](https://github.com/Ravigupta9565) |
@@ -117,7 +117,7 @@ I am always keen to discuss machine learning architectures, open-source projects
 <a href="https://github.com/Ravigupta9565">
   <img src="https://img.shields.io/badge/GitHub-Ravigupta9565-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
 </a>
-<a href="https://smart-healthcare-phi.vercel.app">
+<a href="https://portfolio-website-bay-theta-69.vercel.app/">
   <img src="https://img.shields.io/badge/Portfolio-Live_Deployment-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
 </a>
 <a href="https://leetcode.com/u/Ravi956558/">
