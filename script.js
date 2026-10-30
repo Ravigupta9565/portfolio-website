@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initContactForm();
     initBackToTop();
     initLeetCodeStats();
+    initPhishingPlayground();
+    initResumeViewer();
 });
 
 /* ==========================================================================
@@ -838,4 +840,411 @@ function initLeetCodeStats() {
     }, { threshold: 0.15 });
 
     observer.observe(leetCodeSection);
+}
+
+/* ==========================================================================
+   14. Interactive In-Browser ML Playground (Phishing URL Risk Predictor)
+   ========================================================================== */
+function initPhishingPlayground() {
+    const input = document.getElementById("mlUrlInput");
+    const analyzeBtn = document.getElementById("mlAnalyzeBtn");
+    const presetBtns = document.querySelectorAll(".ml-preset-btn");
+    const riskPercent = document.getElementById("mlRiskPercent");
+    const gaugeCircle = document.getElementById("mlGaugeCircle");
+    const gaugeGlow = document.getElementById("mlGaugeGlow");
+    const statusBadge = document.getElementById("mlStatusBadge");
+    const assessmentText = document.getElementById("mlAssessmentText");
+    const breakdownGrid = document.getElementById("mlBreakdownGrid");
+    const latencyText = document.getElementById("mlLatencyText");
+
+    if (!input || !analyzeBtn) return;
+
+    // Preset buttons quick injection & auto-predict
+    presetBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const url = btn.getAttribute("data-url");
+            if (url) {
+                input.value = url;
+                runPrediction(url);
+            }
+        });
+    });
+
+    // Analyze button click
+    analyzeBtn.addEventListener("click", () => {
+        runPrediction(input.value);
+    });
+
+    // Enter key triggers analysis
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            runPrediction(input.value);
+        }
+    });
+
+    // Run initial prediction on page load
+    runPrediction(input.value || "http://secure-login-bank-verification.com/update-account");
+
+    function runPrediction(rawUrl) {
+        const startTime = performance.now();
+        const analysis = evaluateUrlRisk(rawUrl);
+        const duration = Math.max(1, Math.round(performance.now() - startTime));
+        
+        if (latencyText) {
+            latencyText.textContent = `${duration}ms`;
+        }
+
+        renderPrediction(analysis);
+    }
+
+    function calculateEntropy(str) {
+        if (!str || str.length === 0) return 0;
+        const freq = {};
+        for (let i = 0; i < str.length; i++) {
+            const char = str[i];
+            freq[char] = (freq[char] || 0) + 1;
+        }
+        let entropy = 0;
+        const len = str.length;
+        for (const char in freq) {
+            const p = freq[char] / len;
+            entropy -= p * Math.log2(p);
+        }
+        return Math.round(entropy * 100) / 100;
+    }
+
+    function evaluateUrlRisk(rawUrl) {
+        const trimmed = (rawUrl || "").trim();
+        if (!trimmed) {
+            return {
+                riskScore: 0,
+                badge: "EMPTY TARGET",
+                badgeClass: "bg-slate-700/50 text-slate-300 border-slate-600",
+                color: "#64748b",
+                summary: "Please enter a valid URL target string to compute risk metrics.",
+                features: []
+            };
+        }
+
+        let score = 5; // Baseline internet background entropy
+        const features = [];
+
+        // 1. Protocol / HTTPS Status
+        const isHttps = /^https:\/\//i.test(trimmed);
+        const isHttp = /^http:\/\//i.test(trimmed);
+        if (!isHttps) {
+            score += 25;
+            features.push({
+                name: "Protocol Security",
+                status: isHttp ? "Insecure Plaintext (HTTP)" : "Missing SSL / Unknown Protocol",
+                detail: "+25% Penalty: Vulnerable to credential interception and spoofing",
+                safe: false,
+                icon: "fa-lock-open"
+            });
+        } else {
+            features.push({
+                name: "Protocol Security",
+                status: "Valid HTTPS Encrypted",
+                detail: "0% Penalty: Encrypted transport layer verified",
+                safe: true,
+                icon: "fa-lock"
+            });
+        }
+
+        // Parse hostname & paths
+        let hostname = "";
+        try {
+            const parsed = new URL(trimmed.startsWith("http") ? trimmed : `http://${trimmed}`);
+            hostname = parsed.hostname;
+        } catch (e) {
+            hostname = trimmed.split("/")[0];
+        }
+
+        // 2. IP Address Host Check
+        const ipRegex = /^(?:https?:\/\/)?(?:\d{1,3}\.){3}\d{1,3}(?::\d+)?(?:$|\/)/i;
+        const isIp = ipRegex.test(trimmed) || /^(?:\d{1,3}\.){3}\d{1,3}$/.test(hostname);
+        if (isIp) {
+            score += 30;
+            features.push({
+                name: "Host Type (IPv4 Evasion)",
+                status: "Raw IP Address Host",
+                detail: "+30% Penalty: Malicious actors use raw IPs to evade domain audits",
+                safe: false,
+                icon: "fa-network-wired"
+            });
+        } else {
+            features.push({
+                name: "Host Type",
+                status: `Domain Name (${hostname || "Standard"})`,
+                detail: "0% Penalty: Resolvable standard domain namespace",
+                safe: true,
+                icon: "fa-globe"
+            });
+        }
+
+        // 3. Suspicious Phishing Keywords
+        const suspiciousWords = [
+            "login", "verify", "verification", "secure", "account", "update", "banking",
+            "paypal", "wallet", "signin", "sign-in", "password", "security", "billing",
+            "confirm", "auth", "recover", "ebay", "amazon", "appleid", "microsoft",
+            "netflix", "crypto", "webscr", "redirect", "token", "validate", "portal"
+        ];
+        const lowerUrl = trimmed.toLowerCase();
+        const detectedKeywords = suspiciousWords.filter(w => lowerUrl.includes(w));
+        if (detectedKeywords.length > 0) {
+            const added = Math.min(36, detectedKeywords.length * 12);
+            score += added;
+            features.push({
+                name: "Lexical Phishing Red Flags",
+                status: `Found: ${detectedKeywords.slice(0, 3).join(", ")}${detectedKeywords.length > 3 ? "..." : ""}`,
+                detail: `+${added}% Penalty: High-frequency social engineering trigger tokens`,
+                safe: false,
+                icon: "fa-triangle-exclamation"
+            });
+        } else {
+            features.push({
+                name: "Lexical Pattern",
+                status: "Clean Token Structure",
+                detail: "0% Penalty: No typical credential harvesting terminology detected",
+                safe: true,
+                icon: "fa-font"
+            });
+        }
+
+        // 4. URL Length & Structural Depth
+        const urlLen = trimmed.length;
+        if (urlLen > 75) {
+            score += 20;
+            features.push({
+                name: "URL Length Complexity",
+                status: `Abnormally Long (${urlLen} chars)`,
+                detail: "+20% Penalty: Excessive length designed to conceal destination",
+                safe: false,
+                icon: "fa-ruler-horizontal"
+            });
+        } else if (urlLen > 54) {
+            score += 10;
+            features.push({
+                name: "URL Length Complexity",
+                status: `Elevated Length (${urlLen} chars)`,
+                detail: "+10% Penalty: Above average length threshold (>54 chars)",
+                safe: false,
+                icon: "fa-ruler-horizontal"
+            });
+        } else {
+            features.push({
+                name: "URL Length Complexity",
+                status: `Compact (${urlLen} chars)`,
+                detail: "0% Penalty: Standard concise URL footprint (<54 chars)",
+                safe: true,
+                icon: "fa-ruler-horizontal"
+            });
+        }
+
+        // 5. Suspicious TLD Check
+        const suspiciousTlds = [".xyz", ".top", ".work", ".click", ".buzz", ".tk", ".ml", ".ga", ".cf", ".gq", ".cc", ".ru", ".fit", ".pw", ".bid"];
+        const foundTld = suspiciousTlds.find(tld => hostname.endsWith(tld));
+        if (foundTld) {
+            score += 20;
+            features.push({
+                name: "Top-Level Domain (TLD)",
+                status: `High-Risk TLD (${foundTld})`,
+                detail: "+20% Penalty: Statistical correlation with disposable malicious domains",
+                safe: false,
+                icon: "fa-flag"
+            });
+        } else {
+            features.push({
+                name: "Top-Level Domain (TLD)",
+                status: "Verified / Standard TLD",
+                detail: "0% Penalty: Established enterprise, cloud, or educational domain",
+                safe: true,
+                icon: "fa-check-double"
+            });
+        }
+
+        // 6. Subdomain Depth & Hyphens
+        const subdomains = hostname.split(".").filter(Boolean);
+        const hyphenCount = (hostname.match(/-/g) || []).length;
+        if (subdomains.length > 3 || hyphenCount >= 3) {
+            score += 15;
+            features.push({
+                name: "Domain Structuring & Hyphens",
+                status: `${hyphenCount} Hyphens / ${subdomains.length} Subdomains`,
+                detail: "+15% Penalty: Multi-tier subdomains and hyphenated spoofing tactics",
+                safe: false,
+                icon: "fa-sitemap"
+            });
+        } else {
+            features.push({
+                name: "Domain Structure",
+                status: "Clean Domain Hierarchy",
+                detail: "0% Penalty: Standard domain architecture",
+                safe: true,
+                icon: "fa-sitemap"
+            });
+        }
+
+        // 7. Shannon Entropy (Randomness)
+        const entropy = calculateEntropy(hostname);
+        if (entropy > 3.8 && hostname.length > 12) {
+            score += 12;
+            features.push({
+                name: "Shannon Entropy (Randomness)",
+                status: `Elevated Entropy (${entropy})`,
+                detail: "+12% Penalty: Algorithmic character randomness indicating DGA",
+                safe: false,
+                icon: "fa-calculator"
+            });
+        } else {
+            features.push({
+                name: "Shannon Entropy",
+                status: `Organic Entropy (${entropy})`,
+                detail: "0% Penalty: Lexical frequency adheres to natural language distribution",
+                safe: true,
+                icon: "fa-calculator"
+            });
+        }
+
+        // 8. At-Symbol Obfuscation (@)
+        if (trimmed.includes("@")) {
+            score += 25;
+            features.push({
+                name: "Redirection Obfuscation (@)",
+                status: "Embedded '@' Symbol Detected",
+                detail: "+25% Penalty: Exploits browser URI parser to disguise destination",
+                safe: false,
+                icon: "fa-at"
+            });
+        }
+
+        // Normalize final score between 2% and 99%
+        const finalScore = Math.min(99, Math.max(2, score));
+
+        let badge = "";
+        let badgeClass = "";
+        let color = "";
+        let summary = "";
+
+        if (finalScore >= 80) {
+            badge = "CRITICAL PHISHING THREAT";
+            badgeClass = "bg-rose-500/20 text-rose-300 border-rose-500/40";
+            color = "#f43f5e";
+            summary = "Critical threat detected. Insecure transport, deceptive lexical triggers, and suspicious domain patterns indicate an active credential-harvesting vector.";
+        } else if (finalScore >= 55) {
+            badge = "HIGH RISK SUSPICIOUS";
+            badgeClass = "bg-orange-500/20 text-orange-300 border-orange-500/40";
+            color = "#f97316";
+            summary = "Elevated risk index. Multiple heuristics indicate deceptive domain structuring or non-standard transport. Exercise extreme caution.";
+        } else if (finalScore >= 30) {
+            badge = "MODERATE / CAUTION";
+            badgeClass = "bg-amber-500/20 text-amber-300 border-amber-500/40";
+            color = "#eab308";
+            summary = "Moderate risk signals detected. While some indicators are safe, unusual parameters or missing certificates require manual verification.";
+        } else {
+            badge = "LEGITIMATE & SAFE";
+            badgeClass = "bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
+            color = "#10b981";
+            summary = "Minimal threat detected. Clean lexical profile, authenticated SSL encryption, and legitimate domain structure observed.";
+        }
+
+        return {
+            riskScore: finalScore,
+            badge,
+            badgeClass,
+            color,
+            summary,
+            features
+        };
+    }
+
+    function renderPrediction(result) {
+        // Animate percentage number
+        const currentScore = parseInt(riskPercent.innerText) || 0;
+        animateRiskNumber(riskPercent, currentScore, result.riskScore);
+
+        // Update Gauge Stroke & Dashoffset
+        const circumference = 314.16;
+        const offset = circumference - (result.riskScore / 100) * circumference;
+        gaugeCircle.style.strokeDashoffset = offset;
+        gaugeCircle.style.stroke = result.color;
+
+        // Update Glow Color
+        if (gaugeGlow) {
+            gaugeGlow.style.backgroundColor = result.color;
+        }
+
+        // Status Badge
+        statusBadge.className = `px-4 py-1.5 rounded-full text-xs font-bold font-mono tracking-wide mb-3 flex items-center gap-1.5 border transition-all duration-300 ${result.badgeClass}`;
+        statusBadge.innerHTML = `<i class="fas ${result.riskScore >= 55 ? 'fa-triangle-exclamation' : 'fa-shield-check'}"></i> ${result.badge}`;
+
+        // Assessment Text
+        assessmentText.textContent = result.summary;
+
+        // Render Feature Breakdown Grid
+        breakdownGrid.innerHTML = result.features.map(f => `
+            <div class="p-3.5 rounded-xl border ${f.safe ? 'bg-slate-900/50 border-slate-800' : 'bg-rose-950/20 border-rose-900/40'} flex items-start gap-3 transition hover:border-slate-700">
+                <div class="w-8 h-8 rounded-lg ${f.safe ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'} flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="fas ${f.icon} text-xs"></i>
+                </div>
+                <div class="space-y-0.5 flex-1 min-w-0">
+                    <div class="flex items-center justify-between gap-1">
+                        <span class="text-xs font-bold text-white truncate">${f.name}</span>
+                        <span class="text-[10px] font-mono px-1.5 py-0.5 rounded ${f.safe ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/15 text-rose-300 border border-rose-500/30'}">${f.safe ? 'PASSED' : 'FLAGGED'}</span>
+                    </div>
+                    <p class="text-xs ${f.safe ? 'text-slate-300' : 'text-rose-200'} font-medium truncate">${f.status}</p>
+                    <p class="text-[11px] text-slate-400 leading-tight">${f.detail}</p>
+                </div>
+            </div>
+        `).join("");
+    }
+
+    function animateRiskNumber(element, start, end, duration = 600) {
+        if (!element) return;
+        const startTime = performance.now();
+        function update(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const val = Math.round(start + (end - start) * progress);
+            element.textContent = `${val}%`;
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = `${end}%`;
+            }
+        }
+        requestAnimationFrame(update);
+    }
+}
+
+/* ==========================================================================
+   15. Interactive Resume Preview Container Controls
+   ========================================================================== */
+function initResumeViewer() {
+    const btnPdf = document.getElementById("resumeTabPdf");
+    const btnDoc = document.getElementById("resumeTabDoc");
+    const viewPdf = document.getElementById("resumePdfContainer");
+    const viewDoc = document.getElementById("resumeDocContainer");
+
+    if (!btnPdf || !btnDoc || !viewPdf || !viewDoc) return;
+
+    btnPdf.addEventListener("click", () => {
+        btnPdf.classList.add("bg-brand-500", "text-white", "shadow-sm");
+        btnPdf.classList.remove("text-slate-400", "hover:text-white");
+        btnDoc.classList.remove("bg-brand-500", "text-white", "shadow-sm");
+        btnDoc.classList.add("text-slate-400", "hover:text-white");
+
+        viewPdf.classList.remove("hidden");
+        viewDoc.classList.add("hidden");
+    });
+
+    btnDoc.addEventListener("click", () => {
+        btnDoc.classList.add("bg-brand-500", "text-white", "shadow-sm");
+        btnDoc.classList.remove("text-slate-400", "hover:text-white");
+        btnPdf.classList.remove("bg-brand-500", "text-white", "shadow-sm");
+        btnPdf.classList.add("text-slate-400", "hover:text-white");
+
+        viewDoc.classList.remove("hidden");
+        viewPdf.classList.add("hidden");
+    });
 }
